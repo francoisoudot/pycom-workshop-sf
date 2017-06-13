@@ -38,8 +38,8 @@ class Student:
         self.gender = gender
 
 Sue = Student("Susan Miller", 20, "f")
-print Sue
-print Sue.age
+print(Sue)
+print(Sue.age)
 
 # Example 6 - Lists
 squares = [1, 4, 9, 16, 25]
