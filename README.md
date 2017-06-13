@@ -3,7 +3,7 @@
 # Getting Started with the SiPy and Sending Data
 Welcome! This workshop help you get up and running with MicroPython and the Pycom SiPy. This workshop is written directly parallel to the Microsoft and Sigfox elements for the 19th of June Sigfox + Microsoft + Pycom workshop in San Francisco, USA.
 
-<p align="center"><img src ="https://github.com/pycom-education/pycom-workshop-sf/blob/master/images/SiPy.png" width="500"></p>
+<p align="center"><img src ="https://github.com/pycom-education/pycom-workshop-sf/blob/master/images/SiPy.png" width="300"></p>
 
 **Warning!**
 Before you get started with the tutorial please follow the [instructions](https://docs.pycom.io/pycom_esp32/pycom_esp32/getstarted.html#firmware-upgrades) for updating the firmware on your device. Thanks!
@@ -284,7 +284,7 @@ That's the end of the Pycom section of this workshop! The Sigfox team will now w
 
 Thanks for participating and let us know if you have any questions/suggestions!
 
--
+---
 
 ### Additional Information
 
