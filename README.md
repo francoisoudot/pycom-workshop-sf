@@ -3,10 +3,10 @@
 # Getting Started with the SiPy and Sending Data
 Welcome! This workshop help you get up and running with MicroPython and the Pycom SiPy. This workshop is written directly parallel to the Microsoft and Sigfox elements for the 19th of June Sigfox + Microsoft + Pycom workshop in San Francisco, USA.
 
-<p align="center"><img src ="https://github.com/pycom-education/pycom-workshop-sf/blob/master/images/sipy.png" width="300"></p>
+<p align="center"><img src ="https://github.com/pycom-education/pycom-workshop-sf/blob/master/images/SiPy.png" width="500"></p>
 
 **Warning!**
-Before you get started with the tutorial please follow the [instructions](https://docs.pycom.io/pycom_esp32/pycom_esp32/getstarted.html#firmware-upgrades) for updating the Firmware on your device. Thanks!
+Before you get started with the tutorial please follow the [instructions](https://docs.pycom.io/pycom_esp32/pycom_esp32/getstarted.html#firmware-upgrades) for updating the firmware on your device. Thanks!
 
 # Table of Contents
 * [What You'll Need](#What-You'll-Need)
@@ -37,11 +37,11 @@ Please download the [firmware update tool](https://www.pycom.io/downloads/) and 
 
 You'll need to use a jumper wire to connect across pins GND and G23, as seen on the expansion board. When the pins are connected, power on the SiPy (plug the micro USB cable into your computer) and it will boot into Firmware Upgrade Mode. You'll need to specify the country which you are using the device (i.e. USA). 
 
-<p align="center"><img src ="https://github.com/pycom-education/pycom-workshop-sf/blob/master/images/update.png" width="300"></p>
+<p align="center"><img src ="https://github.com/pycom-education/pycom-workshop-sf/blob/master/images/update.png" width="500"></p>
 
 Once your device is successfully updated, you'll be greeted with a final screen that tells your the SiPy's Sigfox PAC and ID. Remove the jumper wire after a successfully update.
 
-<p align="center"><img src ="https://github.com/pycom-education/pycom-workshop-sf/blob/master/images/update-sigfox.png" width="300"></p>
+<p align="center"><img src ="https://github.com/pycom-education/pycom-workshop-sf/blob/master/images/update-sigfox.png" width="500"></p>
 
 **Save the Sigfox PAC and ID as you'll need them for registering your device later.**
 
@@ -69,7 +69,7 @@ Now that Pymakr is installed, you can connect it to your device by clicking the 
 
 #### Getting Started Examples
 
-You should now be ready to try out some examples! Once you've connected to your SiPy, you'll see three arrows (**>>>**) in the console. These let you know that you're in the MicroPython REPL! If you don't see the indicators, please press the reset button (next to the LED) on your SiPy.
+You should now be ready to try out some examples! Once you've connected to your SiPy, you'll see three arrows (```>>>```) in the console. These let you know that you're in the MicroPython REPL! If you don't see the indicators, please press the reset button (next to the LED) on your SiPy.
 
 To start we'll just try some simple creating & storing variables.
 
