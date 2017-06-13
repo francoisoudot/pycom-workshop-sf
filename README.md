@@ -1,7 +1,9 @@
 <p align="center"><img src ="https://github.com/pycom/pycom-libraries/blob/master/img/logo.png" width="300"></p>
 
 # Getting Started with the SiPy and Sending Data
-Welcome! These workshops help you get up and running with MicroPython and the Pycom SiPy. This workshop is written directly parallel to the Microsoft and Sigfox elements for the 19th of June Sigfox + Microsoft + Pycom workshop in San Francisco, USA.
+Welcome! This workshop help you get up and running with MicroPython and the Pycom SiPy. This workshop is written directly parallel to the Microsoft and Sigfox elements for the 19th of June Sigfox + Microsoft + Pycom workshop in San Francisco, USA.
+
+<p align="center"><img src ="https://github.com/pycom-education/pycom-workshop-sf/blob/master/images/sipy.png" width="300"></p>
 
 **Warning!**
 Before you get started with the tutorial please follow the [instructions](https://docs.pycom.io/pycom_esp32/pycom_esp32/getstarted.html#firmware-upgrades) for updating the Firmware on your device. Thanks!
@@ -15,41 +17,47 @@ Before you get started with the tutorial please follow the [instructions](https:
 * [Contributing](#Contributing)
 
 # What You'll Need
-To make the most out of these workshops, you'll need to get hold of the following:
+To make the most out of this workshops, you'll need the following:
 
-* A Pycom SiPy (22 dBm for USA)
-* A Pycom Expansion Board
-* A Windows/MacOS/Linux Computer (Laptop, PC, etc.)
+* Pycom SiPy (22 dBm for USA)
+* Pycom Expansion Board
+* Windows/MacOS/Linux Computer (Laptop, PC, etc.)
 * Atom Text Editor (+ Pymakr Plugin)
 * Micro USB Cable
-* Male Jumper Wire (Used to reset the board)
+* Male to Male Jumper Wire (Used to update the SiPy)
 
 # Getting Started
-In this workshop we'll take a look at some MicroPython concepts, experiment with connecting a temperature sensor and using Sigfox to send data.
+In this workshop we'll look at MicroPython concepts, experiment with reading data from a temperature sensor and using the Sigfox Network to send the temperature data.
 
-## **Important - Update Your Firmware!**
+### **Important - Update Your Firmware!**
 
 Before you start this workshop, it's important that you update your device to be running the latest build of our firmware. This will ensure that the latest features are available and that anything reference to in this workshop, will work exactly the same on your device as on the device of the presenter!
 
 Please download the [firmware update tool](https://www.pycom.io/downloads/) and install the tool for your specific operating system.
 
-You'll need to use a jumper wire to connect across pins GND and G23, as seen on the expansion board. When the pins are connected, power on the SiPy and it will boot into Firmware Upgrade Mode. You'll need to specify the country which you are using the device (i.e. USA). Once your device is successfully updated, you'll be greeted with a final screen that tells your the SiPy's Sigfox PAC and ID.
+You'll need to use a jumper wire to connect across pins GND and G23, as seen on the expansion board. When the pins are connected, power on the SiPy (plug the micro USB cable into your computer) and it will boot into Firmware Upgrade Mode. You'll need to specify the country which you are using the device (i.e. USA). 
 
-**Save these values as you'll need them for registering your device later.**
+<p align="center"><img src ="https://github.com/pycom-education/pycom-workshop-sf/blob/master/images/update.png" width="300"></p>
 
-### MicroPython Concepts
+Once your device is successfully updated, you'll be greeted with a final screen that tells your the SiPy's Sigfox PAC and ID. Remove the jumper wire after a successfully update.
 
-If you've ever used Python 3, MicroPython (MP) should seem familiar to you! If not you'll have no problems getting started as Python is a fantastic language with syntax that is very similar to english.
+<p align="center"><img src ="https://github.com/pycom-education/pycom-workshop-sf/blob/master/images/update-sigfox.png" width="300"></p>
+
+**Save the Sigfox PAC and ID as you'll need them for registering your device later.**
+
+#### MicroPython Concepts
+
+If you have used Python 3 previously, MicroPython (MP) should seem familiar to you! If not, you'll have no problems getting started as Python is a fantastic language with syntax that is very similar to english.
 
 Lets take a look at some examples but first lets get set up to test some code on the SiPy!
 
 #### Testing Your Code!
 
-To test your code, we'll use the MicroPython REPL (Read Evaluate Print Line) Console. This lets us directly talk to the MP Interpreter, which is used to run the code.
+To test your code, we'll use the MicroPython REPL (Read Evaluate Print Line) Console. This lets us directly talk to the MP Interpreter, which is used to run code on the SiPy.
 
 ### Pymakr Plugin
 
-The easiest way to interact with a Pycom device is by using our Pymakr Plugin. Current this is available for the Atom code editor but will be more widely available at a later date.
+The easiest way to interact with a Pycom device is by using our Pymakr Plugin. Currently this is available for the Atom code editor but will be more widely available at a later date.
 
 Navigate to https://atom.io to download the Atom text editor and then locate **preferences** -> **install**, then search for **Pymakr**.
 
@@ -57,15 +65,15 @@ Install the plugin and click the **open** button at the bottom of the window. Th
 
 #### Connecting your SiPy
 
-Now that Pymakr is installed, you can connect to your device by clicking the **connect** button in the Pymakr Console. If your device isn't found immediately, you might need to add the device's serial address. Click **more** and then **get serial ports**. This will list out all of the available serial ports and copy the Pycom device to your clipboard. Now navigate to the **global settings**, via the **settings** button. You'll now see a text box for device address; paste your clipboard here and the  click **reconnect** (in the Pymakr Console).
+Now that Pymakr is installed, you can connect it to your device by clicking the **connect** button in the Pymakr Console. If your device isn't found immediately, you might need to add the device's serial address inside the settings. Click **more** and then **get serial ports**. This will list out all of the available serial ports and copy the Pycom device to your clipboard. Now navigate to the **global settings**, via the **settings** button. You'll now see a text box for device address; paste your clipboard here and the  click **reconnect** (in the Pymakr Console).
 
 #### Getting Started Examples
 
-You should now be ready to test out some examples! Once you're connected to your device, you'll see three arrows (**>>>**) greeting you. These let you know that you're in the MicroPython REPL! If you don't see these please press the reset button (next to the LED) on your SiPy.
+You should now be ready to try out some examples! Once you've connected to your SiPy, you'll see three arrows (**>>>**) in the console. These let you know that you're in the MicroPython REPL! If you don't see the indicators, please press the reset button (next to the LED) on your SiPy.
 
 To start we'll just try some simple creating & storing variables.
 
-Below we create a variable named 'value' and are storing the string "Hello World" inside of it. We can next print this value back to our screen with the 'print()' function!
+Below, we create a variable named 'value' and are storing the string "Hello World" inside of it. We can next print this value back to our screen with the 'print()' function!
 
 ```python
 >>> value = "Hello World"
@@ -89,7 +97,7 @@ If you want to learn more about the Python Programming Language, check out [thes
 
 We're now going to get into specific that relate to the SiPy Boards and accessing its hardware features!
 
-### Blinking an LED and Using the GPIO
+### Flashing an LED
 
 One of the first things many beginners do when they learn about MicroControllers, is to blink an LED.
 
@@ -99,7 +107,7 @@ We're going to use a different method of running our code on the Pycom Devices t
 
 Earlier, we ran code live on the device using the Python REPL. Now we'll upload complete programs that will be loaded to the device so that it will run every time upon boot!
 
-#### Write Your Blinky Code!
+#### Write Your Code!
 
 Now that we're ready to upload some code to the board, we can finally start writing some code! Let start with a simple main.py file to blink the LED for us.
 
@@ -131,7 +139,7 @@ In order to ensure you've got an empty directory for uploading your code, create
 
 This will upload any files inside of the directory to your device. You can specify certain files via a pymakr.conf file if you wish.
 
-## Collecting Temperature Sensor Data
+### Collecting Temperature Sensor Data
 
 Next we'll look at using a temperature (DS18B20), to collect some information about your surroundings. We'll use a library for the specific sensor, store the data and then send it over Sigfox.
 
@@ -142,10 +150,10 @@ We'll next want to create a structured directory on our SiPy so that the MicroPy
 Inside your project folder, create a new folder called **lib** and place the **onewire.py** file inside **lib**. Your project should now looks like this:
 
 - Project/
-	- lib/
-		- onewire.py
-	- main.py
-	- boot.py
+    - lib/
+        - onewire.py
+    - main.py
+    - boot.py
 
 We can retrieve the code from **onewire.py** using the command ```import onewire```.
 
@@ -153,7 +161,7 @@ To start, connect your temperature sensor to your SiPy as shown in the picture b
 
 Next we'll write a function that get the temperature data and then look at how to send it over Sigfox.
 
-### Writing the Temperature Sensor Function
+#### Writing the Temperature Sensor Function
 
 The temperature sensor library makes it very easy to start collecting data. Ensure that your **main.py** file is empty and is ready to be written to.
 
@@ -177,7 +185,7 @@ print(getTemp())
 
 You can remove the ```print(getTemp())``` statement when you have finsihed testing your code. Now we'll take a look at the Sigfox aspect of sending your data.
 
-## Sending Your Data over Sigfox
+### Sending Your Data over Sigfox
 
 The Sigfox libraries already exist onboard the SiPy so you can import them using the following command, without having to download any additional files.
 
@@ -229,7 +237,7 @@ def getTemp():
     return temp.read_temp_async()
 
 def sendSigfox(data):
-	s.send(data)
+    s.send(data)
 ```
 
 Finally, we'll add a main() function to call all of our other functions inside of a loop. The code below will run through the loop, collecting temperature data, sending it via Sigfox then pausing the device for 10 minutes until it's ready to send data again (In accordance to LPWAN protocols).
@@ -256,22 +264,33 @@ def getTemp():
     return temp.read_temp_async()
 
 def sendSigfox(data):
-	s.send(data)
+    s.send(data)
 
 def main():
-	while True:
-		temperature = getTemp()
-		sendSigfox(temperature)
-		time.sleep(600)
+    while True:
+        temperature = getTemp()
+        sendSigfox(temperature)
+        time.sleep(600)
 
 main()
 ```
 
-## Extra Information
+**There are two important notes here.** Firstly, ensure that you have an antenna connected to your SiPy before attempting to send a Sigfox message as this can damage the device otherwise. Secondly, you will not be able to see any of your Sigfox messages until you have registered your device with the Sigfox Backend. This will be explained to you in the Sigfox section of this workshop.
+
+### Finished - Viewing Your Data via Sigfox Backend
+
+That's the end of the Pycom section of this workshop! The Sigfox team will now walk you through registering your SiPy on their network and viewing the incoming data from your SiPy. From this point on, you'll be able to connect Sigfox into Microsoft's Azure platform and visualise your data!
+
+
+Thanks for participating and let us know if you have any questions/suggestions!
+
+-
+
+### Additional Information
 
 Here are some extra tips for taking your SiPy further and making use of all of it's available hardware!
 
-### Connecting Your Device to Your Own WiFi Network
+#### Connecting Your Device to Your Own WiFi Network
 
 This example shows to connect to a WiFi address. It uses the 'WLAN' class from the 'network' library.
 
@@ -296,7 +315,7 @@ Paste this into your boot.py file and set your Pycom Device to automatically con
 # Useful Links
 * [Pycom](https://pycom.io)
 * [Forum](https://forum.pycom.io)
-* [Docs](https://docs.pycom.io)
+* [Documentation](https://docs.pycom.io)
 
 # Contributing
 Please see the [contribution guide](CONTRIBUTE.md) for how you can add your resources back into the community and how to contribute to this repository.
