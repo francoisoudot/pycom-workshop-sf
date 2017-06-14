@@ -12,6 +12,7 @@ Before you get started with the tutorial please follow the [instructions](https:
 * [What You'll Need](#What-You'll-Need)
 * [Getting Started](#Getting-Started)
 * [Next Steps](#Next-Steps)
+* [Sigfox Part](#Sigfox-Part)
 * [Extra Information](#Extra-Information)
 * [Useful Links](#Useful-Links)
 * [Contributing](#Contributing)
@@ -311,6 +312,22 @@ for net in nets:
 ```
 
 Paste this into your boot.py file and set your Pycom Device to automatically connect to your WiFi network each time it turns on.
+
+
+# Sigfox Part
+## Registering your device
+You will need to register your device on the sigfox network.
+To do so, go to https://backend.sigfox.com/activate, select the devkit Pycom, select the country USA, fill in the device information (device ID and PAC provided earlier by the Pycom software), fill in your account information.
+You have just created your developper account on the sigfox backend.
+
+## Sigfox backend
+You should have received an email to create your password.
+You will find tutorials on the sigfox backend at https://www.youtube.com/playlist?list=PLcw1TnahFRW-dpqGwxa3noSMLP_nTEhdb
+
+## Create your Microsoft Azure account and configure the Sigfox backend 
+You will need to create your Microsoft Azure account before configurung the Sigfox backend.
+You will find the step by step process to do so at https://github.com/aureleq/sigfox-azure-iothub
+
 
 # Useful Links
 * [Pycom](https://pycom.io)
