@@ -327,6 +327,8 @@ You will find tutorials on the sigfox backend at https://www.youtube.com/playlis
 ## Create your Microsoft Azure account and configure the Sigfox backend 
 You will need to create your Microsoft Azure account before configurung the Sigfox backend.
 You will find the step by step process to do so at https://github.com/aureleq/sigfox-azure-iothub
+When configuring the sigfox backend make sure to configure as shown below:
+<p align="center"><img src ="https://github.com/francoisoudot/pycom-workshop-sf/blob/patch-1/images/Screen%20Shot%202017-06-15%20at%2013.01.14.png" width="500"></p>
 
 
 # Useful Links
